@@ -96,8 +96,8 @@ class MolliePaymentMethod extends StorePaymentMethod
         $payment = $mollie->payments->get($molliePaymentID);
 
         if ($payment->isPaid()) {
-            $order->completeOrder($transaction->getMolliePaymentID());
             $order->completePayment();
+            $order->completeOrder($transaction->getMolliePaymentID());
         }
 
         if ($payment->isCanceled()) {
